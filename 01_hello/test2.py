@@ -24,6 +24,12 @@ def test_optional_name():
         name_number = name_number + 1
         logAssert(result_output == "Hello, " + name + "!\n", "Optional name {} isnt working!".format(name_number))
         
+
+def test_usage():
+    results = sp.run("python hello.py", text=True, capture_output=True)
+    result = results.stderr
+    assert result.startswith("usage")
+
 def test_help():
      for flag in help_flags:
         python_run_line = "python hello.py " + flag
